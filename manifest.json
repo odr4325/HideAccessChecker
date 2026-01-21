@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Gmail Drive Access Auto-Select",
-  "version": "1.1",
-  "description": "GmailでGoogleドライブのリンク送信時、「アクセス権を付与しない」を自動的に選択します。",
+  "version": "1.2",
+  "description": "Googleドライブのアクセス権確認画面で、「アクセス権を付与しない」を自動的に選択します。",
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
@@ -14,14 +14,16 @@
   "host_permissions": [
     "https://mail.google.com/*",
     "https://docs.google.com/*",
-    "https://drive.google.com/*"
+    "https://drive.google.com/*",
+    "https://calendar.google.com/*"
   ],
   "content_scripts": [
     {
       "matches": [
         "https://mail.google.com/*",
         "https://docs.google.com/*",
-        "https://drive.google.com/*"
+        "https://drive.google.com/*",
+        "https://calendar.google.com/*"
       ],
       "js": [
         "content.js"

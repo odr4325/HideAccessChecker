@@ -1,4 +1,4 @@
-console.log("Gmail Access Auto-Select: Loaded (One-time Action Ver)");
+console.log("Drive Access Auto-Select: Loaded (Calendar Supported)");
 
 // 1秒ごとに画面を監視
 setInterval(() => {
@@ -29,14 +29,13 @@ function scanAndSelectOnly() {
     // ダイアログが閉じた（見えなくなった）なら、次回のためにフラグをリセットする
     if (!isVisible) {
         if (hasExecutedForCurrentDialog) {
-            console.log("ダイアログが閉じたため、状態をリセットしました");
+            // console.log("ダイアログが閉じたため、状態をリセットしました"); // ログがうるさければコメントアウト
             hasExecutedForCurrentDialog = false;
         }
         return;
     }
 
-    // ダイアログが出ているが、すでにこの回で自動選択済みなら何もしない（ここが重要）
-    // これにより、ユーザーが手動で「他のユーザーと共有」に変えても戻されません
+    // ダイアログが出ているが、すでにこの回で自動選択済みなら何もしない
     if (hasExecutedForCurrentDialog) {
         return;
     }
@@ -69,7 +68,7 @@ function scanAndSelectOnly() {
                 radioButton.dispatchEvent(event);
             }
 
-            // 【重要】「実行済み」にする（ダイアログが閉じるまでロック）
+            // 「実行済み」にする（ダイアログが閉じるまでロック）
             hasExecutedForCurrentDialog = true;
             return;
         }
